@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RestoDigital — Sites web professionnels pour restaurants au Maroc</title>
+<meta name="description" content="RestoDigital crée des sites web professionnels pour les restaurants marocains. Réservation en ligne, menu digital, QR code, avis Google. Livré en 48h. À partir de 2000 DH.">
+<meta property="og:title" content="RestoDigital — Sites web pour restaurants au Maroc">
+<meta property="og:description" content="Votre restaurant mérite un site professionnel. Réservation en ligne, menu digital, avis Google. Livré en 48h.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fraunces:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0F172A;
+  --accent: #3B82F6;
+  --accent-glow: rgba(59,130,246,0.15);
+  --green: #10B981;
+  --orange: #F59E0B;
+  --bg: #FAFBFC;
+  --white: #FFFFFF;
+  --text: #1E293B;
+  --text-light: #64748B;
+  --border: #E2E8F0;
+  --card: #FFFFFF;
+  --font-heading: 'Fraunces', Georgia, serif;
+  --font-body: 'Outfit', -apple-system, sans-serif;
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.06);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.1);
+  --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--font-body);color:var(--text);background:var(--bg);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;font-family:inherit}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+.section-pad{padding:88px 0}
+.fade-in{opacity:0;transform:translateY(25px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* ─── NAV ─── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;transition:all var(--transition)}
+.nav.scrolled{background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);box-shadow:0 1px 8px rgba(0,0,0,0.06);padding:10px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:0 24px}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:var(--font-heading);font-size:1.3rem;font-weight:800;color:var(--white)}
+.nav.scrolled .nav-logo{color:var(--primary)}
+.nav-logo span{color:var(--accent)}
+.nav-logo svg{flex-shrink:0}
+.nav-cta{background:var(--accent);color:var(--white);padding:10px 24px;border-radius:50px;font-weight:600;font-size:0.9rem;transition:all var(--transition)}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(59,130,246,0.4)}
+
+/* ─── HERO ─── */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;background:var(--primary);overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(59,130,246,0.12) 0%,transparent 70%);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-150px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(16,185,129,0.08) 0%,transparent 70%);border-radius:50%}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.25);padding:6px 16px;border-radius:50px;color:var(--accent);font-size:0.85rem;font-weight:600;margin-bottom:20px}
+.hero h1{font-family:var(--font-heading);font-size:clamp(2rem,5vw,3.2rem);font-weight:800;color:var(--white);line-height:1.15;margin-bottom:20px}
+.hero h1 em{color:var(--accent);font-style:normal}
+.hero-desc{color:rgba(255,255,255,0.7);font-size:1.05rem;line-height:1.7;margin-bottom:32px;max-width:480px}
+.hero-buttons{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px}
+.btn{padding:14px 30px;border-radius:50px;font-weight:600;font-size:0.95rem;transition:all var(--transition);display:inline-flex;align-items:center;gap:8px}
+.btn-accent{background:var(--accent);color:var(--white)}
+.btn-accent:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(59,130,246,0.4)}
+.btn-ghost{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,0.3)}
+.btn-ghost:hover{border-color:var(--white);background:rgba(255,255,255,0.05)}
+.hero-stats{display:flex;gap:32px}
+.hero-stat{display:flex;flex-direction:column}
+.hero-stat-num{font-family:var(--font-heading);font-size:1.6rem;font-weight:800;color:var(--accent)}
+.hero-stat-label{font-size:0.8rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px}
+.hero-visual{position:relative}
+.hero-mockup{border-radius:var(--radius);box-shadow:var(--shadow-lg);overflow:hidden;border:2px solid rgba(255,255,255,0.1)}
+.hero-mockup img{width:100%;display:block}
+.hero-float-badge{position:absolute;bottom:-16px;left:-16px;background:var(--white);border-radius:var(--radius-sm);padding:14px 18px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:10px;font-weight:600;font-size:0.9rem}
+.hero-float-badge .badge-icon{width:36px;height:36px;border-radius:50%;background:var(--green);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero-desc{margin-left:auto;margin-right:auto}
+  .hero-buttons{justify-content:center}
+  .hero-stats{justify-content:center}
+  .hero-visual{order:-1;max-width:400px;margin:0 auto}
+  .hero-float-badge{bottom:-12px;left:50%;transform:translateX(-50%)}
+}
+
+/* ─── PROBLÈMES ─── */
+.problems{background:var(--white)}
+.problems-title{font-family:var(--font-heading);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;text-align:center;margin-bottom:12px;color:var(--primary)}
+.problems-sub{text-align:center;color:var(--text-light);font-size:1rem;margin-bottom:48px;max-width:520px;margin-left:auto;margin-right:auto}
+.problems-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.problem-card{background:var(--bg);border-radius:var(--radius);padding:28px;border:1px solid var(--border);transition:all var(--transition)}
+.problem-card:hover{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+.problem-icon{font-size:2rem;margin-bottom:14px}
+.problem-card h3{font-weight:700;font-size:1rem;margin-bottom:6px}
+.problem-card p{font-size:0.9rem;color:var(--text-light);line-height:1.5}
+
+/* ─── CE QU'ON FAIT ─── */
+.solution{background:var(--bg)}
+.solution-title{font-family:var(--font-heading);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;text-align:center;margin-bottom:12px}
+.solution-sub{text-align:center;color:var(--text-light);font-size:1rem;margin-bottom:56px;max-width:560px;margin-left:auto;margin-right:auto}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.feature-card{background:var(--white);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow);transition:all var(--transition);border:1px solid transparent}
+.feature-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--accent)}
+.feature-icon{width:52px;height:52px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:16px}
+.feature-icon.blue{background:rgba(59,130,246,0.1)}
+.feature-icon.green{background:rgba(16,185,129,0.1)}
+.feature-icon.orange{background:rgba(245,158,11,0.1)}
+.feature-icon.purple{background:rgba(139,92,246,0.1)}
+.feature-card h3{font-weight:700;font-size:1.05rem;margin-bottom:8px}
+.feature-card p{font-size:0.9rem;color:var(--text-light);line-height:1.5}
+
+/* ─── PORTFOLIO ─── */
+.portfolio{background:var(--white)}
+.portfolio-title{font-family:var(--font-heading);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;text-align:center;margin-bottom:12px}
+.portfolio-sub{text-align:center;color:var(--text-light);margin-bottom:48px}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
+.portfolio-card{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:all var(--transition);background:var(--bg);border:1px solid var(--border)}
+.portfolio-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.portfolio-img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.portfolio-body{padding:20px 24px}
+.portfolio-body h3{font-weight:700;font-size:1.05rem;margin-bottom:4px}
+.portfolio-body p{font-size:0.85rem;color:var(--text-light);margin-bottom:12px}
+.portfolio-link{display:inline-flex;align-items:center;gap:6px;color:var(--accent);font-weight:600;font-size:0.9rem;transition:gap var(--transition)}
+.portfolio-link:hover{gap:10px}
+
+/* ─── PRICING ─── */
+.pricing{background:var(--bg)}
+.pricing-title{font-family:var(--font-heading);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;text-align:center;margin-bottom:12px}
+.pricing-sub{text-align:center;color:var(--text-light);margin-bottom:48px}
+.pricing-card{max-width:520px;margin:0 auto;background:var(--white);border-radius:var(--radius);padding:40px;box-shadow:var(--shadow-lg);border:2px solid var(--accent);position:relative;overflow:hidden}
+.pricing-card::before{content:'Le plus demandé';position:absolute;top:20px;right:-32px;background:var(--accent);color:var(--white);padding:4px 40px;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;transform:rotate(45deg)}
+.pricing-name{font-family:var(--font-heading);font-size:1.4rem;font-weight:700;margin-bottom:4px}
+.pricing-desc{color:var(--text-light);font-size:0.9rem;margin-bottom:24px}
+.pricing-price{display:flex;align-items:baseline;gap:4px;margin-bottom:6px}
+.pricing-amount{font-family:var(--font-heading);font-size:2.8rem;font-weight:800;color:var(--primary)}
+.pricing-currency{font-size:1rem;color:var(--text-light);font-weight:500}
+.pricing-note{font-size:0.85rem;color:var(--text-light);margin-bottom:28px}
+.pricing-features{list-style:none;margin-bottom:32px}
+.pricing-features li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:0.95rem;border-bottom:1px solid var(--border)}
+.pricing-features li:last-child{border:none}
+.pricing-check{color:var(--green);font-weight:700;font-size:1.1rem;flex-shrink:0;margin-top:2px}
+.pricing-cta{display:block;width:100%;text-align:center;padding:16px;background:var(--accent);color:var(--white);border-radius:50px;font-weight:700;font-size:1.05rem;transition:all var(--transition)}
+.pricing-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(59,130,246,0.4)}
+.pricing-guarantee{text-align:center;margin-top:16px;font-size:0.85rem;color:var(--text-light)}
+
+/* ─── PROCESS ─── */
+.process{background:var(--white)}
+.process-title{font-family:var(--font-heading);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;text-align:center;margin-bottom:48px}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.process-step{text-align:center;position:relative}
+.process-num{width:48px;height:48px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;margin:0 auto 14px}
+.process-step h3{font-weight:700;font-size:0.95rem;margin-bottom:6px}
+.process-step p{font-size:0.85rem;color:var(--text-light);line-height:1.4}
+@media(max-width:768px){.process-steps{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:480px){.process-steps{grid-template-columns:1fr}}
+
+/* ─── TESTIMONIAL ─── */
+.testimonial{background:var(--primary);color:var(--white)}
+.testimonial-inner{text-align:center;max-width:640px;margin:0 auto}
+.testimonial-quote{font-family:var(--font-heading);font-size:clamp(1.2rem,3vw,1.6rem);font-weight:600;line-height:1.5;margin-bottom:24px;font-style:italic}
+.testimonial-author{font-size:0.95rem;color:rgba(255,255,255,0.7)}
+.testimonial-author strong{color:var(--white)}
+.testimonial-stars{color:var(--orange);font-size:1.2rem;margin-bottom:16px;letter-spacing:3px}
+
+/* ─── FAQ ─── */
+.faq{background:var(--bg)}
+.faq-title{font-family:var(--font-heading);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;text-align:center;margin-bottom:40px}
+.faq-list{max-width:680px;margin:0 auto}
+.faq-item{background:var(--white);border-radius:var(--radius-sm);margin-bottom:12px;border:1px solid var(--border);overflow:hidden}
+.faq-question{width:100%;padding:18px 24px;background:none;text-align:left;font-weight:600;font-size:0.95rem;color:var(--text);display:flex;justify-content:space-between;align-items:center;transition:background var(--transition)}
+.faq-question:hover{background:var(--bg)}
+.faq-question .faq-arrow{transition:transform var(--transition);font-size:1.2rem;color:var(--text-light)}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+.faq-item.open .faq-answer{max-height:300px}
+.faq-answer p{padding:0 24px 18px;font-size:0.9rem;color:var(--text-light);line-height:1.6}
+
+/* ─── FINAL CTA ─── */
+.final-cta{background:linear-gradient(135deg,var(--primary) 0%,#1E3A5F 100%);text-align:center;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(59,130,246,0.15) 0%,transparent 70%);border-radius:50%}
+.final-cta h2{font-family:var(--font-heading);font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;color:var(--white);margin-bottom:16px;position:relative;z-index:2}
+.final-cta p{color:rgba(255,255,255,0.7);font-size:1rem;margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto;position:relative;z-index:2}
+.final-cta .btn{position:relative;z-index:2}
+
+/* ─── FOOTER ─── */
+.footer{background:var(--primary);padding:32px 0;text-align:center}
+.footer p{color:rgba(255,255,255,0.4);font-size:0.8rem}
+.footer a{color:var(--accent)}
+
+/* ─── WA FLOAT ─── */
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:900;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:all var(--transition);animation:pulse-wa 2s infinite}
+.wa-float:hover{transform:scale(1.1)}
+.wa-float svg{width:28px;height:28px}
+@keyframes pulse-wa{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.4)}50%{box-shadow:0 4px 30px rgba(37,211,102,0.6),0 0 0 12px rgba(37,211,102,0.1)}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-logo"><svg width="36" height="36" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="120" rx="24" fill="#3B82F6"/><circle cx="60" cy="50" r="18" fill="white" fill-opacity="0.9"/><path d="M52 50 L60 42 L68 50 L60 58Z" fill="#3B82F6"/><rect x="42" y="70" width="36" height="6" rx="3" fill="white" fill-opacity="0.7"/><rect x="48" y="80" width="24" height="4" rx="2" fill="white" fill-opacity="0.4"/></svg>Resto<span>Digital</span></div>
+    <a href="https://wa.me/212663745898?text=Bonjour%20!%20Je%20suis%20int%C3%A9ress%C3%A9%20par%20vos%20services%20de%20cr%C3%A9ation%20de%20site%20restaurant." class="nav-cta" target="_blank">Demander un devis →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero section-pad">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="fade-in">
+        <div class="hero-tag">🚀 Agence #1 au Maroc pour restaurants</div>
+        <h1>Votre restaurant mérite <em>un site qui vend</em></h1>
+        <p class="hero-desc">Site professionnel, réservation en ligne, menu digital QR code, collecte d'avis Google — tout inclus, livré en 48 heures. Zéro prise de tête.</p>
+        <div class="hero-buttons">
+          <a href="https://wa.me/212663745898?text=Bonjour%20!%20Je%20veux%20un%20site%20pour%20mon%20restaurant." class="btn btn-accent" target="_blank">💬 Discuter sur WhatsApp</a>
+          <a href="#portfolio" class="btn btn-ghost">Voir nos réalisations</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><span class="hero-stat-num">48h</span><span class="hero-stat-label">Livraison</span></div>
+          <div class="hero-stat"><span class="hero-stat-num">2000 DH</span><span class="hero-stat-label">À partir de</span></div>
+          <div class="hero-stat"><span class="hero-stat-num">100%</span><span class="hero-stat-label">Satisfaction</span></div>
+        </div>
+      </div>
+      <div class="hero-visual fade-in">
+        <div class="hero-mockup">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Aperçu site restaurant" loading="lazy">
+        </div>
+        <div class="hero-float-badge">
+          <div class="badge-icon">✓</div>
+          <div>Livré en 48h<br><small style="color:#64748B;font-weight:400">Clé en main</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLÈMES -->
+<section class="problems section-pad" id="problemes">
+  <div class="container">
+    <h2 class="problems-title fade-in">Vous reconnaissez-vous ?</h2>
+    <p class="problems-sub fade-in">La majorité des restaurants au Maroc perdent des clients chaque jour à cause de ces problèmes</p>
+    <div class="problems-grid">
+      <div class="problem-card fade-in"><div class="problem-icon">🚫</div><h3>Pas de site web</h3><p>Vos clients cherchent votre menu ou vos horaires sur Google... et ne trouvent rien. Ils vont chez le concurrent.</p></div>
+      <div class="problem-card fade-in"><div class="problem-icon">📞</div><h3>Réservations par téléphone</h3><p>Vous passez des heures au téléphone pour prendre des réservations. Vos clients veulent réserver en 2 clics.</p></div>
+      <div class="problem-card fade-in"><div class="problem-icon">⭐</div><h3>Peu d'avis Google</h3><p>Vous avez des clients satisfaits mais ils ne laissent jamais d'avis. Votre note Google stagne.</p></div>
+      <div class="problem-card fade-in"><div class="problem-icon">😤</div><h3>Sites trop chers</h3><p>Les agences classiques demandent 10 000-30 000 DH et prennent des semaines. Inabordable.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CE QU'ON FAIT -->
+<section class="solution section-pad" id="services">
+  <div class="container">
+    <h2 class="solution-title fade-in">Tout ce dont votre restaurant a besoin</h2>
+    <p class="solution-sub fade-in">Un pack complet pour digitaliser votre restaurant et attirer plus de clients</p>
+    <div class="features-grid">
+      <div class="feature-card fade-in"><div class="feature-icon blue">🌐</div><h3>Site web professionnel</h3><p>Design moderne, optimisé mobile, rapide. Votre restaurant aura une présence en ligne digne des grandes enseignes.</p></div>
+      <div class="feature-card fade-in"><div class="feature-icon green">📅</div><h3>Réservation en ligne</h3><p>Vos clients réservent en 30 secondes. Vous recevez la confirmation directement sur votre WhatsApp.</p></div>
+      <div class="feature-card fade-in"><div class="feature-icon orange">📱</div><h3>Menu digital + QR code</h3><p>Vos clients scannent un QR code et voient votre menu avec photos et prix. Facile à mettre à jour.</p></div>
+      <div class="feature-card fade-in"><div class="feature-icon purple">⭐</div><h3>Collecte d'avis Google</h3><p>Un système intelligent qui booste votre note Google. Les clients satisfaits laissent un avis public, les mécontents vous parlent en privé.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio section-pad" id="portfolio">
+  <div class="container">
+    <h2 class="portfolio-title fade-in">Nos réalisations</h2>
+    <p class="portfolio-sub fade-in">Des sites qui donnent faim</p>
+    <div class="portfolio-grid">
+      <div class="portfolio-card fade-in">
+        <img class="portfolio-img" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=700&q=80" alt="Napoli Pizza" loading="lazy">
+        <div class="portfolio-body">
+          <h3>Napoli Pizza — Casablanca</h3>
+          <p>Pizzeria artisanale au feu de bois. Site complet avec réservation et menu digital.</p>
+          <a href="https://napoli-pizza-demo-6v2x.vercel.app" class="portfolio-link" target="_blank">Voir le site →</a>
+        </div>
+      </div>
+      <div class="portfolio-card fade-in">
+        <img class="portfolio-img" src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=700&q=80" alt="Restaurant marocain" loading="lazy">
+        <div class="portfolio-body">
+          <h3>Dar Tajine — Marrakech</h3>
+          <p>Restaurant marocain traditionnel. Tagines, couscous et spécialités locales.</p>
+          <a href="#" class="portfolio-link">Bientôt en ligne →</a>
+        </div>
+      </div>
+      <div class="portfolio-card fade-in">
+        <img class="portfolio-img" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=700&q=80" alt="Café" loading="lazy">
+        <div class="portfolio-body">
+          <h3>Café Bloom — Rabat</h3>
+          <p>Coffee shop et pâtisserie artisanale. Ambiance cozy et brunch du weekend.</p>
+          <a href="#" class="portfolio-link">Bientôt en ligne →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process section-pad">
+  <div class="container">
+    <h2 class="process-title fade-in">Votre site en 4 étapes simples</h2>
+    <div class="process-steps fade-in">
+      <div class="process-step"><div class="process-num">1</div><h3>Contactez-nous</h3><p>Envoyez-nous un message WhatsApp. On discute de votre restaurant en 5 minutes.</p></div>
+      <div class="process-step"><div class="process-num">2</div><h3>Envoyez vos infos</h3><p>Menu, photos, horaires, logo. On vous guide avec un formulaire simple.</p></div>
+      <div class="process-step"><div class="process-num">3</div><h3>On construit</h3><p>En 48h, votre site est prêt. Design, réservation, menu QR, avis — tout inclus.</p></div>
+      <div class="process-step"><div class="process-num">4</div><h3>Vous êtes en ligne</h3><p>On met votre site en ligne et on vous forme en 15 minutes. C'est parti !</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing section-pad" id="tarifs">
+  <div class="container">
+    <h2 class="pricing-title fade-in">Un prix juste, sans surprise</h2>
+    <p class="pricing-sub fade-in">Tout est inclus. Pas de frais cachés.</p>
+    <div class="pricing-card fade-in">
+      <p class="pricing-name">Pack Digital Complet</p>
+      <p class="pricing-desc">Tout ce qu'il faut pour digitaliser votre restaurant</p>
+      <div class="pricing-price">
+        <span class="pricing-amount">2000 — 3000</span>
+        <span class="pricing-currency">DH</span>
+      </div>
+      <p class="pricing-note">Paiement unique • Pas d'abonnement obligatoire</p>
+      <ul class="pricing-features">
+        <li><span class="pricing-check">✓</span>Site web professionnel responsive</li>
+        <li><span class="pricing-check">✓</span>Système de réservation en ligne (WhatsApp)</li>
+        <li><span class="pricing-check">✓</span>Menu digital avec QR code imprimable</li>
+        <li><span class="pricing-check">✓</span>Système de collecte d'avis Google</li>
+        <li><span class="pricing-check">✓</span>Optimisation Google (SEO local)</li>
+        <li><span class="pricing-check">✓</span>Hébergement inclus 1 an</li>
+        <li><span class="pricing-check">✓</span>Formation d'utilisation (15 min)</li>
+        <li><span class="pricing-check">✓</span>Livraison en 48 heures</li>
+      </ul>
+      <a href="https://wa.me/212663745898?text=Bonjour%20!%20Je%20veux%20le%20Pack%20Digital%20Complet%20pour%20mon%20restaurant." class="pricing-cta" target="_blank">💬 Commander maintenant sur WhatsApp</a>
+      <p class="pricing-guarantee">✅ Satisfait ou remboursé • 50% à la commande, 50% à la livraison</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial section-pad">
+  <div class="container">
+    <div class="testimonial-inner fade-in">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote">"En 2 jours, j'avais un site magnifique avec réservation en ligne. Mes clients adorent scanner le QR code pour voir le menu. Je recommande à 100%."</p>
+      <p class="testimonial-author"><strong>Mohammed A.</strong> — Propriétaire, Napoli Pizza, Casablanca</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq section-pad" id="faq">
+  <div class="container">
+    <h2 class="faq-title fade-in">Questions fréquentes</h2>
+    <div class="faq-list fade-in">
+      <div class="faq-item"><button class="faq-question">En combien de temps mon site sera-t-il prêt ? <span class="faq-arrow">▼</span></button><div class="faq-answer"><p>48 heures après réception de vos informations (menu, photos, logo). Dans certains cas, ça peut être encore plus rapide.</p></div></div>
+      <div class="faq-item"><button class="faq-question">Est-ce que je peux modifier le menu moi-même ? <span class="faq-arrow">▼</span></button><div class="faq-answer"><p>Oui. On vous montre comment faire en 15 minutes. Et si vous avez besoin d'aide, on est toujours disponible sur WhatsApp.</p></div></div>
+      <div class="faq-item"><button class="faq-question">Est-ce qu'il y a un abonnement mensuel ? <span class="faq-arrow">▼</span></button><div class="faq-answer"><p>L'hébergement est inclus pendant 1 an. Après, un petit forfait de maintenance optionnel à 200-300 DH/mois couvre l'hébergement, les mises à jour et le support.</p></div></div>
+      <div class="faq-item"><button class="faq-question">Comment fonctionne la réservation en ligne ? <span class="faq-arrow">▼</span></button><div class="faq-answer"><p>Vos clients remplissent un formulaire sur votre site. Vous recevez la réservation instantanément sur WhatsApp avec tous les détails. Vous confirmez en un message.</p></div></div>
+      <div class="faq-item"><button class="faq-question">Et si je ne suis pas satisfait ? <span class="faq-arrow">▼</span></button><div class="faq-answer"><p>On vous rembourse. Vous payez 50% à la commande et 50% à la livraison, uniquement si le résultat vous plaît.</p></div></div>
+      <div class="faq-item"><button class="faq-question">Pourquoi c'est moins cher qu'une agence classique ? <span class="faq-arrow">▼</span></button><div class="faq-answer"><p>On utilise une technologie avancée qui nous permet de créer des sites de qualité agence en une fraction du temps. Le gain de temps, on le répercute sur le prix.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta section-pad">
+  <div class="container">
+    <h2 class="fade-in">Prêt à digitaliser votre restaurant ?</h2>
+    <p class="fade-in">Discutons 5 minutes sur WhatsApp. On vous montre un aperçu gratuit de votre futur site.</p>
+    <a href="https://wa.me/212663745898?text=Bonjour%20!%20Je%20veux%20un%20aper%C3%A7u%20gratuit%20pour%20mon%20restaurant." class="btn btn-accent fade-in" target="_blank">💬 Recevoir un aperçu gratuit</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 RestoDigital — Sites web pour restaurants au Maroc</p>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/212663745898?text=Bonjour%20!%20Je%20suis%20int%C3%A9ress%C3%A9%20par%20vos%20services." class="wa-float" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+/* NAV SCROLL */
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)});
+
+/* FADE IN */
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+/* FAQ ACCORDION */
+document.querySelectorAll('.faq-question').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.parentElement;
+    document.querySelectorAll('.faq-item').forEach(i=>{if(i!==item)i.classList.remove('open')});
+    item.classList.toggle('open');
+  });
+});
+</script>
+</body>
+</html>
